@@ -1,0 +1,21 @@
+{
+    "name": "jawira/php-ini-settings",
+    "description": "Manage your PHP settings",
+    "type": "library",
+    "require": {
+        "php": ">=7.1",
+        "jawira/skeleton": "^1.9"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jawira Portugal",
+            "email": "dev@tugal.be"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jawira\\PhpIniSettings\\": "src/"
+        }
+    }
+}

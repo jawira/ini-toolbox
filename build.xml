@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="PHP ini settings" description="Manage php settings" default="diagnostics">
+
+  <defaultexcludes default="true"/><!--Initializing default excludes-->
+  <defaultexcludes add="**/.idea"/>
+  <defaultexcludes add="**/.idea/**"/>
+
+  <property name="phing.http.proxy" value="${env.http_proxy}"/>
+
+  <target name="diagnostics">
+    <diagnostics/>
+  </target>
+
+  <target name="git:tags" description="List all git tags">
+    <!--https://stackoverflow.com/a/34239190/4345061-->
+    <exec executable="git" passthru="true">
+      <arg value="log"/>
+      <arg line="--graph --all --decorate --oneline --simplify-by-decoration"/>
+    </exec>
+  </target>
+
+  <target name="changelog:links" description="Update links in composer.json">
+    <composer command="require">
+      <arg value="symplify/changelog-linker"/>
+    </composer>
+    <exec executable="vendor/bin/changelog-linker">
+      <arg value="link"/>
+    </exec>
+    <composer command="remove">
+      <arg value="symplify/changelog-linker"/>
+    </composer>
+  </target>
+
+  <target name="php:version" description="Get current PHP version">
+    <exec executable="${php.interpreter}" passthru="true" checkreturn="true">
+      <arg value="--version"/>
+    </exec>
+  </target>
+
+  <target name="php:lint" description="Check PHP syntax">
+    <property name="phplint.dir" value="src" description="Based on pds/skeleton dirs"/>
+    <phplint haltonfailure="true">
+      <fileset dir="${phplint.dir}">
+        <include name="**/*.php"/>
+      </fileset>
+    </phplint>
+  </target>
+
+</project>
