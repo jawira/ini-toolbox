@@ -1,5 +1,4 @@
-Changelog
-=========
+# Changelog
 
 All notable changes to this project will be documented in this file.
 
@@ -12,16 +11,15 @@ All notable changes to this project will be documented in this file.
 ### Security
 -->
 
-Unreleased
-----------
+## Unreleased
 
 ### Added
 
 - Set and get php's options
+- [#2] php.ini directives can be retrieved as constants
 
 
-
-<!---
+<!--
 Guiding Principles
 
     Changelogs are for humans, not machines.
@@ -41,3 +39,5 @@ Types of changes
     ### Fixed       for any bug fixes.
     ### Security    in case of vulnerabilities.
 -->
+
+[#2]: https://github.com/jawira/php-ini-settings/pull/2
