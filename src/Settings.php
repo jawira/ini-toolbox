@@ -14,6 +14,10 @@ namespace Jawira\PhpIniSettings;
  * - ini_​set
  * - php_​ini_​loaded_​file
  * - php_​ini_​scanned_​files
+ * - get_cfg_var
+ *
+ *
+ * @see     https://www.php.net/manual/en/configuration.changes.php
  *
  * @package Jawira\PhpIniSettings
  * @author  Jawira Portugal <dev@tugal.be>
