@@ -10,9 +10,10 @@ namespace Jawira\PhpIniSettings;
  * Some constants have been marked as deprecated, but it's only a hack. Configuration settings marked as deprecated
  * cannot be changed at runtime, but have been marked as such to be easily identifiable on your IDE.
  *
- * @see     https://www.php.net/manual/en/ini.list.php
- * @see     https://www.php.net/manual/en/configuration.changes.modes.php
- * @package Jawira\PhpIniSettings
+ * @see       https://www.php.net/manual/en/ini.list.php
+ * @see       https://www.php.net/manual/en/configuration.changes.modes.php
+ * @author    Jawira Portugal <dev@tugal.be>
+ * @package   Jawira\PhpIniSettings
  */
 abstract class Key
 {
