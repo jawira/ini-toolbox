@@ -1,5 +1,7 @@
-@todo Project name
-==================
+PHP ini settings
+================
+
+Change PHP's settings on the fly.
 
 <!--
 BADGES:
@@ -11,6 +13,9 @@ https://phppackages.org/p/jawira/case-converter
 
 Usage
 -----
+
+Usually you configure PHP through `php.ini` file, however it's also possible to 
+change these settings at runtime: 
 
 Set values:
 
