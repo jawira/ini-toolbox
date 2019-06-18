@@ -28,7 +28,7 @@ class Settings
      *
      * @var array
      */
-    public $backup = [];
+    protected $backup = [];
 
     /**
      * Gets the value of a configuration option
@@ -121,7 +121,7 @@ class Settings
      *
      * @return null|string
      */
-    public function getFromIni(string $varName)
+    public function getFromIni(string $varName): ?string
     {
         $value = get_cfg_var($varName);
 
@@ -131,9 +131,10 @@ class Settings
     /**
      *
      */
-    public function backup()
+    public function backup(): self
     {
-        $this->backup = $this->getAll(null, false);
+        $fullConfig   = $this->getAll(null, false);
+        $this->backup = is_array($fullConfig) ? $fullConfig : [];
 
         return $this;
     }
@@ -144,11 +145,11 @@ class Settings
      * A PHP Warning is thrown if $extension is invalid
      *
      * @param null|string $extension Extension's settings
-     * @param null|bool   $details   Set false to return only current values
+     * @param bool        $details   Set false to return only current values
      *
      * @return null|array
      */
-    public function getAll(string $extension = null, bool $details = true): ?array
+    public function getAll(?string $extension = null, bool $details = true): ?array
     {
         $values = ini_get_all($extension, $details);
 
