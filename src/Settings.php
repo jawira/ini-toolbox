@@ -141,6 +141,13 @@ class Settings
         return $dir;
     }
 
+    /**
+     * Load directive directly from php.ini
+     *
+     * @param string $varName
+     *
+     * @return null|string
+     */
     public function getFromIni(string $varName)
     {
         $value = get_cfg_var($varName);
