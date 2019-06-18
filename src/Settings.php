@@ -24,21 +24,11 @@ namespace Jawira\PhpIniSettings;
 class Settings
 {
     /**
-     * Sets the value of a configuration option
+     * Ini backup
      *
-     * @see https://www.php.net/manual/en/function.ini-set.php
-     *
-     * @param string $varName
-     * @param string $newValue
-     *
-     * @return null|string The old value on success, null on failure.
+     * @var array
      */
-    public function set(string $varName, string $newValue): ?string
-    {
-        $oldValue = ini_set($varName, $newValue);
-
-        return (false !== $oldValue) ? $oldValue : null;
-    }
+    public $backup = [];
 
     /**
      * Gets the value of a configuration option
@@ -66,23 +56,6 @@ class Settings
         ini_restore($varName);
 
         return $this;
-    }
-
-    /**
-     * Gets all configuration options
-     *
-     * A PHP Warning is thrown if $extension is invalid
-     *
-     * @param null|string $extension Extension's settings
-     * @param null|bool   $details   Set false to return only current values
-     *
-     * @return null|array
-     */
-    public function getAll(string $extension = null, bool $details = true): ?array
-    {
-        $values = ini_get_all($extension, $details);
-
-        return (is_array($values)) ? $values : null;
     }
 
     /**
@@ -153,5 +126,58 @@ class Settings
         $value = get_cfg_var($varName);
 
         return (false !== $value) ? $value : null;
+    }
+
+    /**
+     *
+     */
+    public function backup()
+    {
+        $this->backup = $this->getAll(null, false);
+
+        return $this;
+    }
+
+    /**
+     * Gets all configuration options
+     *
+     * A PHP Warning is thrown if $extension is invalid
+     *
+     * @param null|string $extension Extension's settings
+     * @param null|bool   $details   Set false to return only current values
+     *
+     * @return null|array
+     */
+    public function getAll(string $extension = null, bool $details = true): ?array
+    {
+        $values = ini_get_all($extension, $details);
+
+        return (is_array($values)) ? $values : null;
+    }
+
+    public function rollback()
+    {
+        foreach ($this->backup as $key => $value) {
+            $this->set($key, $value);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of a configuration option
+     *
+     * @see https://www.php.net/manual/en/function.ini-set.php
+     *
+     * @param string $varName
+     * @param string $newValue
+     *
+     * @return null|string The old value on success, null on failure.
+     */
+    public function set(string $varName, string $newValue = ''): ?string
+    {
+        $oldValue = ini_set($varName, $newValue);
+
+        return (false !== $oldValue) ? $oldValue : null;
     }
 }
