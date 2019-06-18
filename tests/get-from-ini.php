@@ -9,10 +9,9 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $ini = new Settings();
 
-$old = $ini->set(Key::SOAP_WSDL_CACHE_TTL, '87654');
-$old = $ini->set(Key::SOAP_WSDL_CACHE_TTL, 87654);
-$new = $ini->get(Key::SOAP_WSDL_CACHE_TTL);
-$fromIni = $ini->getFromIni(Key::SOAP_WSDL_CACHE_TTL);
+$old = $ini->set(Key::SESSION_CACHE_EXPIRE, 300);
+$new = $ini->get(Key::SESSION_CACHE_EXPIRE);
+$fromIni = $ini->getFromIni(Key::SESSION_CACHE_EXPIRE);
 
 var_dump($old, $new, $fromIni);
 
