@@ -6,8 +6,7 @@
   ],
   "type": "library",
   "require": {
-    "php": ">=7.1",
-    "jawira/skeleton": "^1.9"
+    "php": ">=7.1"
   },
   "license": "MIT",
   "authors": [
@@ -21,5 +20,8 @@
     "psr-4": {
       "Jawira\\PhpIniSettings\\": "src/"
     }
+  },
+  "require-dev": {
+    "jawira/skeleton": "^1.9"
   }
 }
