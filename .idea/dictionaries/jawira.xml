@@ -85,7 +85,10 @@
       <w>perdir</w>
       <w>pfpro</w>
       <w>pgsql</w>
+      <w>phing</w>
+      <w>phive</w>
       <w>phpsessid</w>
+      <w>phpstan</w>
       <w>plink</w>
       <w>prefs</w>
       <w>procs</w>
@@ -102,6 +105,7 @@
       <w>smtp</w>
       <w>superglobal</w>
       <w>sybct</w>
+      <w>symplify</w>
       <w>sysvshm</w>
       <w>textasvarchar</w>
       <w>textlimit</w>

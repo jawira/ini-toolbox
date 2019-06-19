@@ -1,13 +1,10 @@
 {
   "name": "jawira/php-ini-settings",
+  "type": "library",
   "description": "Manage your PHP settings",
   "keywords": [
     "php.ini"
   ],
-  "type": "library",
-  "require": {
-    "php": ">=7.1"
-  },
   "license": "MIT",
   "authors": [
     {
@@ -16,12 +13,21 @@
       "homepage": "http://jawira.com/"
     }
   ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "require-dev": {
+    "jawira/skeleton": "^1.9"
+  },
+  "suggest": {
+    "pds/skeleton": "PHP Package Development Standards"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
   "autoload": {
     "psr-4": {
       "Jawira\\PhpIniSettings\\": "src/"
     }
-  },
-  "require-dev": {
-    "jawira/skeleton": "^1.9"
   }
 }
