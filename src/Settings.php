@@ -26,7 +26,7 @@ class Settings
     /**
      * Ini backup
      *
-     * @var array
+     * @var string[]
      */
     protected $backup = [];
 
@@ -147,7 +147,7 @@ class Settings
      * @param null|string $extension Extension's settings
      * @param bool        $details   Set false to return only current values
      *
-     * @return null|array
+     * @return null|string[]
      */
     public function getAll(?string $extension = null, bool $details = true): ?array
     {
@@ -156,7 +156,7 @@ class Settings
         return (is_array($values)) ? $values : null;
     }
 
-    public function rollback()
+    public function rollback(): self
     {
         foreach ($this->backup as $key => $value) {
             $this->set($key, $value);
