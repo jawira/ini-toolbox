@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<project name="PHP ini settings" description="Manage php settings" default="setup">
+<project name="PHP ini settings" description="Manage php settings" default="setup" phingVersion="3">
 
   <defaultexcludes default="true"/><!--Initializing default excludes-->
   <defaultexcludes add="**/.idea"/>
@@ -77,13 +77,7 @@
   </target>
 
   <target name="phing:visualize" description="Update build.png">
-    <composer command="require">
-      <arg value="jawira/phing-visualizer"/>
-    </composer>
-    <exec executable="vendor/bin/phing-visualizer"/>
-    <composer command="remove">
-      <arg value="jawira/phing-visualizer"/>
-    </composer>
+    <visualizer/>
   </target>
 
   <target name="phpstan:run" description="Analyse at max level">
