@@ -1,0 +1,12 @@
+name: QA
+on: pull_request
+
+jobs:
+  my-job:
+    name: Installing
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Install Phing
+        run: |
+          curl http://example.com --output /usr/local/bin/phing --silent
+          phing -version
