@@ -19,3 +19,8 @@ jobs:
           PHIVE_URL: https://github.com/phar-io/phive/releases/download/0.13.2/phive-0.13.2.phar
         run: sudo curl $PHIVE_URL --output /usr/local/bin/phive --silent
 
+      - name: Setup project
+        run: phing setup
+
+      - name: Running tests
+        run: phing qa
