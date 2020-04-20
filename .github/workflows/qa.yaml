@@ -11,7 +11,7 @@ jobs:
         env:
           PHING_URL:
         run: >
-          curl https://github.com/phingofficial/phing/releases/download/3.0.0-alpha3/phing-3.0.0-alpha3.phar
+          sudo curl https://github.com/phingofficial/phing/releases/download/3.0.0-alpha3/phing-3.0.0-alpha3.phar
           --output /usr/local/bin/phing --verbose
       - name: Install Phive
         env:
