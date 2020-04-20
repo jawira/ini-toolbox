@@ -11,5 +11,5 @@ jobs:
         env:
           PHING: https://github.com/phingofficial/phing/releases/download/3.0.0-alpha3/phing-3.0.0-alpha3.phar
         run: |
-          curl ${PHING} --output /usr/local/bin/phing --silent
+          curl $PHING --output /usr/local/bin/phing --silent
           phing -version
