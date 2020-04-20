@@ -26,6 +26,12 @@ jobs:
         run: sudo chmod +x /usr/local/bin/phive
 
       - name: Setup project
+        run: pwd
+
+      - name: Setup project
+        run: ls -la
+
+      - name: Setup project
         run: phing setup
 
       - name: Running tests
