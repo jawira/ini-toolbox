@@ -15,8 +15,13 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- Set and get php's options
 - [#2] php.ini directives can be retrieved as constants
+
+## [v0.0.0] - First working version
+
+### Added
+
+- Set and get php's options
 
 
 <!--

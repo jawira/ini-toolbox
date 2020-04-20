@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<project name="PHP ini settings" description="Manage php settings" default="diagnostics">
+<project name="PHP ini settings" description="Manage php settings" default="setup" phingVersion="3">
 
   <defaultexcludes default="true"/><!--Initializing default excludes-->
   <defaultexcludes add="**/.idea"/>
@@ -8,9 +8,17 @@
 
   <property name="phing.http.proxy" value="${env.http_proxy}"/>
 
-  <target name="diagnostics">
-    <diagnostics/>
-  </target>
+  <target name="setup"
+          description="Prepares project for development"
+          depends="phive:install, composer:install, php:version"/>
+
+  <target name="refresh"
+          description="Updates and normalize project files"
+          depends="setup, changelog:linker, composer:normalize, phing:visualize"/>
+
+  <target name="qa"
+          description="Check project quality"
+          depends="php:lint, phpstan:run"/>
 
   <target name="git:tags" description="List all git tags">
     <!--https://stackoverflow.com/a/34239190/4345061-->
@@ -18,18 +26,6 @@
       <arg value="log"/>
       <arg line="--graph --all --decorate --oneline --simplify-by-decoration"/>
     </exec>
-  </target>
-
-  <target name="changelog:links" description="Update links in composer.json">
-    <composer command="require">
-      <arg value="symplify/changelog-linker"/>
-    </composer>
-    <exec executable="vendor/bin/changelog-linker">
-      <arg value="link"/>
-    </exec>
-    <composer command="remove">
-      <arg value="symplify/changelog-linker"/>
-    </composer>
   </target>
 
   <target name="php:version" description="Get current PHP version">
@@ -45,6 +41,52 @@
         <include name="**/*.php"/>
       </fileset>
     </phplint>
+  </target>
+
+  <target name="composer:install" description="Install for dev">
+    <composer command="install">
+      <arg value="--no-suggest"/>
+      <arg value="--no-interaction"/>
+      <arg value="--profile"/>
+      <arg value="--prefer-dist"/>
+    </composer>
+  </target>
+
+  <target name="composer:normalize" description="Normalizes composer.json according to its JSON schema">
+    <!--https://packagist.org/packages/localheinz/composer-normalize-->
+    <composer command="normalize"/>
+  </target>
+
+  <target name="phive:install" description="Install Phar files">
+    <!--Assumes Phive is installed-->
+    <exec executable="phive" passthru="true" checkreturn="true">
+      <arg value="install"/>
+    </exec>
+  </target>
+
+  <target name="changelog:linker" description="Update links in composer.json">
+    <composer command="require">
+      <arg value="symplify/changelog-linker"/>
+    </composer>
+    <exec executable="vendor/bin/changelog-linker">
+      <arg value="link"/>
+    </exec>
+    <composer command="remove">
+      <arg value="symplify/changelog-linker"/>
+    </composer>
+  </target>
+
+  <target name="phing:visualize" description="Update build.png">
+    <visualizer/>
+  </target>
+
+  <target name="phpstan:run" description="Analyse at max level">
+    <exec executable="bin/phpstan" passthru="true" checkreturn="true">
+      <arg line="--level=max"/>
+      <arg value="analyze"/>
+      <arg value="--no-progress"/>
+      <arg path="src"/>
+    </exec>
   </target>
 
 </project>
