@@ -9,10 +9,11 @@ jobs:
     steps:
       - name: Install Phing
         env:
-          PHING_URL: https://github.com/phingofficial/phing/releases/download/3.0.0-alpha3/phing-3.0.0-alpha3.phar
-        run: |
-          curl $PHING_URL --output /usr/local/bin/phing --silent
-          phing -version
+          PHING_URL:
+        run:
+          -> curl https://github.com/phingofficial/phing/releases/download/3.0.0-alpha3/phing-3.0.0-alpha3.phar
+            --output /usr/local/bin/phing --silent
+          - phinv -version
       - name: Install Phive
         env:
           PHIVE_URL: https://github.com/phar-io/phive/releases/download/0.13.2/phive-0.13.2.phar
