@@ -6,17 +6,16 @@ jobs:
   qa:
     name: Installing
     runs-on: ubuntu-18.04
+
     steps:
+
       - name: Install Phing
         env:
-          PHING_URL:
-        run: >
-          sudo curl https://github.com/phingofficial/phing/releases/download/3.0.0-alpha3/phing-3.0.0-alpha3.phar
-          --output /usr/local/bin/phing --verbose
+          PHING_URL: https://github.com/phingofficial/phing/releases/download/3.0.0-alpha3/phing-3.0.0-alpha3.phar
+        run: sudo curl $PHING_URL --output /usr/local/bin/phing --silent
+
       - name: Install Phive
         env:
           PHIVE_URL: https://github.com/phar-io/phive/releases/download/0.13.2/phive-0.13.2.phar
-        run: |
-          curl $PHIVE_URL --output /usr/local/bin/phive --silent
-          phive --version
+        run: sudo curl $PHIVE_URL --output /usr/local/bin/phive --silent
 
