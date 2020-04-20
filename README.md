@@ -3,6 +3,8 @@ PHP ini settings
 
 Change PHP's settings on the fly.
 
+[![Issues](https://img.shields.io/github/issues/jawira/php-ini-settings.svg?label=HuBoard&color=694DC2)](https://huboard.com/jawira/php-ini-settings)
+
 <!--
 BADGES:
 https://github.com/php-pds/badges

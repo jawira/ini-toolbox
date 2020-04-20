@@ -3,3 +3,8 @@
 /composer.phar
 /vendor/
 /composer.lock
+/bin/phpstan
+/bin/phing
+/bin/phpbench
+/bin/behat
+/bin/phpunit
