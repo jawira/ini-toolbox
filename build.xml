@@ -63,7 +63,7 @@
       <arg value="install"/>
       <arg value="--force-accept-unsigned"/>
       <arg value="--trust-gpg-keys"/>
-      <arg value="4AA394086372C20A,8E730BA25823D8B5,2420BAE0A3BE25C6,31C7E470E2138192,A3A2E8F226F0BC06"/>
+      <arg value="4AA394086372C20A,8E730BA25823D8B5,2420BAE0A3BE25C6,31C7E470E2138192,A3A2E8F226F0BC06,CF1A108D0E7AE720"/>
     </exec>
   </target>
 
