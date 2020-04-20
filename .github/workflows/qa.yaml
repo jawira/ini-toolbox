@@ -12,12 +12,16 @@ jobs:
       - name: Install Phing
         env:
           PHING_URL: https://github.com/phingofficial/phing/releases/download/3.0.0-alpha3/phing-3.0.0-alpha3.phar
-        run: sudo curl $PHING_URL --output /usr/local/bin/phing --silent
+        run:
+          - sudo curl $PHING_URL --output /usr/local/bin/phing --silent
+          - sudo chmod +x /usr/local/bin/phing
 
       - name: Install Phive
         env:
           PHIVE_URL: https://github.com/phar-io/phive/releases/download/0.13.2/phive-0.13.2.phar
-        run: sudo curl $PHIVE_URL --output /usr/local/bin/phive --silent
+        run:
+          - sudo curl $PHIVE_URL --output /usr/local/bin/phive --silent
+          - sudo chmod +x /usr/local/bin/phive
 
       - name: Setup project
         run: phing setup
