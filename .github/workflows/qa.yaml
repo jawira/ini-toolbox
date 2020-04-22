@@ -28,8 +28,9 @@ jobs:
 
       - name: Setup project
         env:
-          GITHUB_AUTH_TOKEN: ${{ secrets.PHIVE_TOKEN }}
+          GITHUB_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: phing setup
+
 
       - name: Running tests
         run: phing qa
