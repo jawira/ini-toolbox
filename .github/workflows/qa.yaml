@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   qa:
-    name: Installing
+    name: Installing code quality
     runs-on: ubuntu-18.04
 
     steps:
@@ -27,6 +27,9 @@ jobs:
         run: sudo chmod +x /usr/local/bin/phive
 
       - name: Setup project
+        env:
+          # GITHUB_AUTH_TOKEN recognized by Phive
+          GITHUB_AUTH_TOKEN: $GITHUB_TOKEN
         run: phing setup
 
       - name: Running tests

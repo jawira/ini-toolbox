@@ -7,5 +7,4 @@
   <phar name="phpstan" version="^0.11.5" installed="0.12.18" location="./bin/phpstan" copy="false"/>
   <phar name="phing" version="^3.0.0-alpha2" installed="3.0.0-alpha3" location="./bin/phing" copy="false"/>
   <phar name="behat/behat" version="^3.3.0" installed="3.3.0" location="./bin/behat" copy="false"/>
-  <phar name="phpbench" version="^0.16.9" installed="0.16.9" location="./bin/phpbench" copy="false"/>
 </phive>
