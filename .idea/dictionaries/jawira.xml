@@ -51,6 +51,8 @@
       <w>filesize</w>
       <w>fopen</w>
       <w>geoip</w>
+      <w>gitattributes</w>
+      <w>gitignore</w>
       <w>hidef</w>
       <w>htscanner</w>
       <w>httponly</w>

@@ -9,12 +9,11 @@
   "authors": [
     {
       "name": "Jawira Portugal",
-      "email": "dev@tugal.be",
       "homepage": "http://jawira.com/"
     }
   ],
   "require": {
-    "php": ">=7.1"
+    "php": ">=7.2"
   },
   "require-dev": {
     "jawira/skeleton": "^1.9"

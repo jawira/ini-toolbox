@@ -92,4 +92,11 @@
     </exec>
   </target>
 
+  <target name="behat:run">
+    <exec executable="bin/behat" passthru="true" checkreturn="true">
+      <arg value="--append-snippets"/>
+      <arg value="--no-interaction"/>
+      <arg value="--colors"/>
+    </exec>
+  </target>
 </project>

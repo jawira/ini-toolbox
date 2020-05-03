@@ -5,9 +5,10 @@
 /.gitignore         export-ignore
 /.idea              export-ignore
 /build.xml          export-ignore
+/config/config.yml  export-ignore
 /docs               export-ignore
+/features           export-ignore
 /phive.xml          export-ignore
 /phpunit.xml        export-ignore
 /phpunit.xml.dist   export-ignore
 /tests              export-ignore
-
