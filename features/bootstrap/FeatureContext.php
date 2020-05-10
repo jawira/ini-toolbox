@@ -27,13 +27,23 @@ class FeatureContext implements Context
     }
 
     /**
-     * @Then /^The method must not return false$/
+     * @Then /^The method must not return null$/
      */
-    public function theMethodMustReturnNotEmptyValue()
+    public function theMethodMustNotReturnNull()
     {
-        if ($this->result === false) {
+        if (is_null($this->result)) {
             throw new LogicException('Invalid return value');
         }
         printf('Returned value is: %s', $this->result);
+    }
+
+    /**
+     * @Then /^The method must return null$/
+     */
+    public function theMethodMustReturnNull()
+    {
+        if (!is_null($this->result)) {
+            throw new LogicException('Invalid return value');
+        }
     }
 }
