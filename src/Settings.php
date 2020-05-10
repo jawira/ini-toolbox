@@ -2,19 +2,16 @@
 
 namespace Jawira\PhpIniSettings;
 
+use function ini_get;
+use function ini_set;
+
 /**
  * Class Settings
  *
  * This is a wrapper Class to manage `ini` related functions:
  *
- * - ini_​alter
- * - ini_​get_​all
  * - ini_​get
- * - ini_​restore
  * - ini_​set
- * - php_​ini_​loaded_​file
- * - php_​ini_​scanned_​files
- * - get_cfg_var
  *
  * @see     https://www.php.net/manual/en/configuration.changes.php
  *
@@ -45,13 +42,32 @@ class Settings
     }
 
     /**
+     * Sets the value of a configuration option
+     *
+     * @see https://www.php.net/manual/en/function.ini-set.php
+     *
+     * @param string $varName
+     * @param string $newValue
+     *
+     * @return null|string The old value on success, null on failure.
+     */
+    public function set(string $varName, string $newValue): ?string
+    {
+        $oldValue = ini_set($varName, $newValue);
+
+        return (false !== $oldValue) ? $oldValue : null;
+    }
+
+    /**
      * Restores the value of a configuration option
+     *
+     * (Private because not production ready)
      *
      * @param string $varName
      *
      * @return \Jawira\PhpIniSettings\Settings
      */
-    public function restore(string $varName): self
+    private function restore(string $varName): self
     {
         ini_restore($varName);
 
@@ -61,9 +77,11 @@ class Settings
     /**
      * Retrieve a path to the loaded php.ini file
      *
+     * (Private because not production ready)
+     *
      * @return string The loaded php.ini path, or NULL if one is not loaded.
      */
-    public function loadedFile(): ?string
+    private function loadedFile(): ?string
     {
         $path = php_ini_loaded_file();
 
@@ -73,9 +91,11 @@ class Settings
     /**
      * Return a list of .ini files parsed from the additional ini dir
      *
+     * (Private because not production ready)
+     *
      * @return null|string
      */
-    public function scannedFiles(): ?string
+    private function scannedFiles(): ?string
     {
         $path = php_ini_scanned_files();
 
@@ -98,12 +118,14 @@ class Settings
      * were loaded, and in what order, is available by calling php_ini_scanned_files(), or by running PHP with the
      * --ini option.
      *
+     * (Private because not production ready)
+     *
      * @param string $dir
      *
-     * @return string
      * @see https://www.php.net/manual/en/configuration.file.php#configuration.file.scan
+     * @return string
      */
-    public function scanDir($dir = ''): string
+    private function scanDir($dir = ''): string
     {
         if (defined('PHP_INI_SCAN_DIR')) {
             $dir = PHP_INI_SCAN_DIR;
@@ -117,11 +139,13 @@ class Settings
     /**
      * Load directive directly from php.ini
      *
+     * (Private because not production ready)
+     *
      * @param string $varName
      *
      * @return null|string
      */
-    public function getFromIni(string $varName): ?string
+    private function getFromIni(string $varName): ?string
     {
         $value = get_cfg_var($varName);
 
@@ -129,9 +153,9 @@ class Settings
     }
 
     /**
-     *
+     * (Private because not production ready)
      */
-    public function backup(): self
+    private function backup(): self
     {
         $fullConfig   = $this->getAll(null, false);
         $this->backup = is_array($fullConfig) ? $fullConfig : [];
@@ -149,36 +173,19 @@ class Settings
      *
      * @return null|string[]
      */
-    public function getAll(?string $extension = null, bool $details = true): ?array
+    private function getAll(?string $extension = null, bool $details = true): ?array
     {
         $values = ini_get_all($extension, $details);
 
         return (is_array($values)) ? $values : null;
     }
 
-    public function rollback(): self
+    private function rollback(): self
     {
         foreach ($this->backup as $key => $value) {
             $this->set($key, $value);
         }
 
         return $this;
-    }
-
-    /**
-     * Sets the value of a configuration option
-     *
-     * @see https://www.php.net/manual/en/function.ini-set.php
-     *
-     * @param string $varName
-     * @param string $newValue
-     *
-     * @return null|string The old value on success, null on failure.
-     */
-    public function set(string $varName, string $newValue = ''): ?string
-    {
-        $oldValue = ini_set($varName, $newValue);
-
-        return (false !== $oldValue) ? $oldValue : null;
     }
 }

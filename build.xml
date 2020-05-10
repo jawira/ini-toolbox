@@ -17,8 +17,8 @@
           depends="setup, changelog:linker, composer:normalize, phing:visualize"/>
 
   <target name="qa"
-          description="Check project quality"
-          depends="php:lint, phpstan:run"/>
+          description="Quality assurance"
+          depends="php:lint, phpstan:run, behat:run"/>
 
   <target name="git:tags" description="List all git tags">
     <!--https://stackoverflow.com/a/34239190/4345061-->
@@ -80,7 +80,7 @@
   </target>
 
   <target name="phing:visualize" description="Update build.png">
-    <visualizer/>
+    <visualizer destination="docs"/>
   </target>
 
   <target name="phpstan:run" description="Analyse at max level">
@@ -95,6 +95,7 @@
   <target name="behat:run">
     <exec executable="bin/behat" passthru="true" checkreturn="true">
       <arg value="--append-snippets"/>
+      <arg value="--snippets-for"/>
       <arg value="--no-interaction"/>
       <arg value="--colors"/>
     </exec>

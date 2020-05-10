@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Jawira\PhpIniSettings;
 
@@ -15,7 +15,7 @@ namespace Jawira\PhpIniSettings;
  * @author    Jawira Portugal <dev@tugal.be>
  * @package   Jawira\PhpIniSettings
  */
-abstract class Key
+abstract class Keys
 {
     /**
      * allow_call_time_pass_reference
@@ -6942,5 +6942,4 @@ abstract class Key
      * @see https://www.php.net/manual/en/zlib.configuration.php#ini.zlib.output-handler
      */
     const ZLIB_OUTPUT_HANDLER = 'zlib.output_handler';
-
 }
