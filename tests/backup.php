@@ -2,7 +2,7 @@
 
 namespace Jawira\PhpIniSettings\GetAll;
 
-use Jawira\PhpIniSettings\Key;
+use Jawira\PhpIniSettings\Keys;
 use Jawira\PhpIniSettings\Settings;
 
 require __DIR__ . '/../vendor/autoload.php';

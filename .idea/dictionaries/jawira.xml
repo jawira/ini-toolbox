@@ -6,6 +6,7 @@
       <w>autoreset</w>
       <w>autostart</w>
       <w>axisc</w>
+      <w>azerty</w>
       <w>batchsize</w>
       <w>bcmath</w>
       <w>bcompiler</w>
@@ -19,6 +20,7 @@
       <w>cachegrind</w>
       <w>cainfo</w>
       <w>casesensitive</w>
+      <w>changelogs</w>
       <w>charasvarchar</w>
       <w>colnames</w>
       <w>compatability</w>
@@ -51,6 +53,8 @@
       <w>filesize</w>
       <w>fopen</w>
       <w>geoip</w>
+      <w>gitattributes</w>
+      <w>gitignore</w>
       <w>hidef</w>
       <w>htscanner</w>
       <w>httponly</w>
@@ -119,6 +123,7 @@
       <w>uploadprogress</w>
       <w>userid</w>
       <w>verisign</w>
+      <w>versioning</w>
       <w>xbithack</w>
       <w>xmlrpc</w>
       <w>xmms</w>

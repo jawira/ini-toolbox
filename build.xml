@@ -17,8 +17,8 @@
           depends="setup, changelog:linker, composer:normalize, phing:visualize"/>
 
   <target name="qa"
-          description="Check project quality"
-          depends="php:lint, phpstan:run"/>
+          description="Quality assurance"
+          depends="php:lint, phpstan:run, behat:run"/>
 
   <target name="git:tags" description="List all git tags">
     <!--https://stackoverflow.com/a/34239190/4345061-->
@@ -58,9 +58,12 @@
   </target>
 
   <target name="phive:install" description="Install Phar files">
-    <!--Assumes Phive is installed-->
-    <exec executable="phive" passthru="true" checkreturn="true">
+    <exec executable="phive" checkreturn="true" passthru="true">
+      <arg value="--no-progress"/>
       <arg value="install"/>
+      <arg value="--force-accept-unsigned"/>
+      <arg value="--trust-gpg-keys"/>
+      <arg value="4AA394086372C20A,8E730BA25823D8B5,2420BAE0A3BE25C6,31C7E470E2138192,A3A2E8F226F0BC06,CF1A108D0E7AE720"/>
     </exec>
   </target>
 
@@ -77,7 +80,7 @@
   </target>
 
   <target name="phing:visualize" description="Update build.png">
-    <visualizer/>
+    <visualizer destination="docs"/>
   </target>
 
   <target name="phpstan:run" description="Analyse at max level">
@@ -89,4 +92,12 @@
     </exec>
   </target>
 
+  <target name="behat:run">
+    <exec executable="vendor/bin/behat" passthru="true" checkreturn="true">
+      <arg value="--append-snippets"/>
+      <arg value="--snippets-for"/>
+      <arg value="--no-interaction"/>
+      <arg value="--colors"/>
+    </exec>
+  </target>
 </project>

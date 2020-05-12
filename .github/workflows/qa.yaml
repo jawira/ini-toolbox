@@ -4,12 +4,33 @@ on: pull_request
 
 jobs:
   qa:
-    name: Installing
+    name: Installing code quality
     runs-on: ubuntu-18.04
+
     steps:
+      - uses: actions/checkout@v2
+
       - name: Install Phing
         env:
-          PHING: https://github.com/phingofficial/phing/releases/download/3.0.0-alpha3/phing-3.0.0-alpha3.phar
-        run: |
-          curl $PHING --output /usr/local/bin/phing --silent
-          phing -version
+          PHING_URL: https://github.com/phingofficial/phing/releases/download/3.0.0-alpha3/phing-3.0.0-alpha3.phar
+        run: sudo curl -L $PHING_URL --output /usr/local/bin/phing --silent
+
+      - name: Chmod Phing
+        run: sudo chmod +x /usr/local/bin/phing
+
+      - name: Install Phive
+        env:
+          PHIVE_URL: https://github.com/phar-io/phive/releases/download/0.13.2/phive-0.13.2.phar
+        run: sudo curl -L $PHIVE_URL --output /usr/local/bin/phive --silent
+
+      - name: Chmod Phive
+        run: sudo chmod +x /usr/local/bin/phive
+
+      - name: Setup project
+        env:
+          GITHUB_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: phing setup
+
+
+      - name: Running tests
+        run: phing qa
