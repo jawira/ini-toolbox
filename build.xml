@@ -93,7 +93,7 @@
   </target>
 
   <target name="behat:run">
-    <exec executable="bin/behat" passthru="true" checkreturn="true">
+    <exec executable="vendor/bin/behat" passthru="true" checkreturn="true">
       <arg value="--append-snippets"/>
       <arg value="--snippets-for"/>
       <arg value="--no-interaction"/>

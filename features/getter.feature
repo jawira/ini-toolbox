@@ -15,6 +15,7 @@ Feature: Get ini settings
       | default_charset      |
       | display_errors       |
       | post_max_size        |
+      | smtp_port            |
 
   Scenario Outline: Using getter with invalid ini keys
     Given I have an instance of "\Jawira\PhpIniSettings\Settings"

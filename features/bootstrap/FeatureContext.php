@@ -46,4 +46,34 @@ class FeatureContext implements Context
             throw new LogicException('Invalid return value');
         }
     }
+
+    /**
+     * @When I call :arg1 method with :arg2 and :arg3 params
+     */
+    public function iCallMethodWithAndParams($methodName, $firstArgument, $secondArgument)
+    {
+        $this->result = $this->myInstance->$methodName($firstArgument, $secondArgument);
+    }
+
+    /**
+     * @Then The method must return value :arg1
+     */
+    public function theMethodMustReturn($arg1)
+    {
+        if ($this->result !== $arg1) {
+            throw new LogicException('Unexpected return value');
+        }
+    }
+
+    /**
+     * @Then The default timezone must be :arg1
+     */
+    public function theDefaultTimezoneMustBe($expectedTz)
+    {
+        $date = date_create();
+        $tz = date_timezone_get($date);
+        if (timezone_name_get($tz) !== $expectedTz) {
+            throw new LogicException('Unexpected timezone');
+        }
+    }
 }

@@ -3,7 +3,8 @@
   "type": "library",
   "description": "Manage your PHP settings",
   "keywords": [
-    "php.ini"
+    "php.ini",
+    "ini"
   ],
   "license": "MIT",
   "authors": [
@@ -16,7 +17,9 @@
     "php": ">=7.2"
   },
   "require-dev": {
-    "jawira/skeleton": "^1.9"
+    "jawira/skeleton": "^1.9",
+    "behat/behat": "^3.6",
+    "pds/skeleton": "^1.0"
   },
   "suggest": {
     "pds/skeleton": "PHP Package Development Standards"
