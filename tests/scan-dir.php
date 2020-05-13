@@ -1,13 +1,13 @@
 <?php
 
-namespace Jawira\PhpIniSettings\GetAll;
+namespace Jawira\IniToolbox\GetAll;
 
-use Jawira\PhpIniSettings\Keys;
-use Jawira\PhpIniSettings\Settings;
+use Jawira\IniToolbox\Keys;
+use Jawira\IniToolbox\IniToolbox;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$ini = new Settings();
+$ini = new IniToolbox();
 $all = $ini->scanDir('/tmp/jawi');
 $files = $ini->scannedFiles();
 

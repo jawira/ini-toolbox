@@ -1,13 +1,13 @@
 <?php
 
-namespace Jawira\PhpIniSettings\GetAll;
+namespace Jawira\IniToolbox\GetAll;
 
-use Jawira\PhpIniSettings\Keys;
-use Jawira\PhpIniSettings\Settings;
+use Jawira\IniToolbox\Keys;
+use Jawira\IniToolbox\IniToolbox;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$ini = new Settings();
+$ini = new IniToolbox();
 
 $old = $ini->set(Keys::SOAP_WSDL_CACHE_TTL, '87654');
 $old = $ini->set(Keys::SOAP_WSDL_CACHE_TTL, 87654);

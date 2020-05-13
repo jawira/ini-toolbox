@@ -1,13 +1,13 @@
 <?php
 
-namespace Jawira\PhpIniSettings\MaxExecution;
+namespace Jawira\IniToolbox\MaxExecution;
 
-use Jawira\PhpIniSettings\Keys;
-use Jawira\PhpIniSettings\Settings;
+use Jawira\IniToolbox\Keys;
+use Jawira\IniToolbox\IniToolbox;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$ini = new Settings();
+$ini = new IniToolbox();
 $ini->set(Keys::MAX_EXECUTION_TIME, 1);
 
 $x = 1;

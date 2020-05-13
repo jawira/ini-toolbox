@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Jawira\PhpIniSettings;
+namespace Jawira\IniToolbox;
 
 use function ini_get;
 use function ini_set;
@@ -18,7 +18,7 @@ use function ini_set;
  * @package Jawira\PhpIniSettings
  * @author  Jawira Portugal <dev@tugal.be>
  */
-class Settings
+class IniToolbox
 {
     /**
      * Ini backup
@@ -30,9 +30,12 @@ class Settings
     /**
      * Gets the value of a configuration option
      *
+     * Returns the value of the configuration option as a string on success, or an empty string for null values.
+     * Returns NULL if the configuration option doesn't exist.
+     *
      * @param string $varName
      *
-     * @return null|string Old value
+     * @return null|string Setting value
      */
     public function get(string $varName): ?string
     {
@@ -65,7 +68,7 @@ class Settings
      *
      * @param string $varName
      *
-     * @return \Jawira\PhpIniSettings\Settings
+     * @return \Jawira\IniToolbox\IniToolbox
      */
     private function restore(string $varName): self
     {
@@ -122,8 +125,8 @@ class Settings
      *
      * @param string $dir
      *
-     * @see https://www.php.net/manual/en/configuration.file.php#configuration.file.scan
      * @return string
+     * @see https://www.php.net/manual/en/configuration.file.php#configuration.file.scan
      */
     private function scanDir($dir = ''): string
     {
@@ -157,7 +160,7 @@ class Settings
      */
     private function backup(): self
     {
-        $fullConfig   = $this->getAll(null, false);
+        $fullConfig = $this->getAll(null, false);
         $this->backup = is_array($fullConfig) ? $fullConfig : [];
 
         return $this;
@@ -169,7 +172,7 @@ class Settings
      * A PHP Warning is thrown if $extension is invalid
      *
      * @param null|string $extension Extension's settings
-     * @param bool        $details   Set false to return only current values
+     * @param bool $details Set false to return only current values
      *
      * @return null|string[]
      */
