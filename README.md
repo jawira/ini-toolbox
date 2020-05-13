@@ -1,5 +1,4 @@
-PHP ini settings
-================
+# Ini Toolbox
 
 Change PHP's settings on the fly.
 
@@ -13,40 +12,57 @@ https://php-eye.com/about#badges
 https://phppackages.org/p/jawira/case-converter
 -->
 
-Usage
------
+## Usage
 
-Usually you configure PHP through `php.ini` file, however it's also possible to 
-change these settings at runtime: 
 
-Set values:
+Usually you configure PHP through `php.ini` file, however **for some values**, it's also possible to
+change these settings at runtime.
 
-```php
-$ini = new Settings();
-$oldValue = $ini->set('option-name','value');
-```
+### Get values
 
-Get values:
+Use `Settings::get` to get values:
 
 ```php
-$ini = new Settings();
-$oldValue = $ini->get('option-name');
+use \Jawira\IniToolbox\{IniToolbox, Keys};
+
+$ini = new IniToolbox();
+$foo = $ini->get(Keys::SMTP_PORT);       // 25
+$bar = $ini->get(Keys::DEFAULT_CHARSET); // UTF-8
 ```
 
-How to install
---------------
+### Set values
 
-@todo
+Use `Settings::set` to set values:
 
-Requirements
-------------
+```php
+use \Jawira\IniToolbox\{IniToolbox, Keys};
 
-@todo
+$ini = new IniToolbox();
+$oldTimezone = $ini->set(Keys::DATE_TIMEZONE, 'Europe/Brussels');
+echo $oldTimezone; // Europe/Berlin
+```
+
+### Constants
+
+`Keys` is a convenience class, it contains most of the configuration options as constants.
+
+```php
+use \Jawira\IniToolbox\Keys;
+
+Keys::SMTP_PORT;            // same as 'smtp_port'
+Keys::MAX_EXECUTION_TIME;   // same as 'max_execution_time'
+```
+
+## How to install
+
+```
+composer require jawira/ini-toolbox
+```
 
 Contributing
 ------------
 
-To contribute to this project please read [CONTRIBUTING.md](./CONTRIBUTING.md)
+If you liked this project, ⭐ star it on GitHub.
 
 License
 -------
