@@ -1,6 +1,6 @@
 <?php /** @noinspection PhpUnused */
 
-namespace Jawira\PhpIniSettings;
+namespace Jawira\IniToolbox;
 
 /**
  * php.ini keys

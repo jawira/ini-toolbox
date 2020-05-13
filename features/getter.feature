@@ -1,7 +1,7 @@
 Feature: Get ini settings
 
   Scenario Outline: Using getter with valid ini keys
-    Given I have an instance of "\Jawira\PhpIniSettings\Settings"
+    Given I have an instance of "\Jawira\IniToolbox\IniToolbox"
     When I call "get" method with "<parameter>" param
     Then The method must not return null
 
@@ -14,11 +14,11 @@ Feature: Get ini settings
       | sendmail_path        |
       | default_charset      |
       | display_errors       |
-      | post_max_size        |
       | smtp_port            |
+      | max_execution_time   |
 
   Scenario Outline: Using getter with invalid ini keys
-    Given I have an instance of "\Jawira\PhpIniSettings\Settings"
+    Given I have an instance of "\Jawira\IniToolbox\IniToolbox"
     When I call "get" method with "<parameter>" param
     Then The method must return null
 
