@@ -1,26 +1,21 @@
 # Ini Toolbox
 
-Change PHP's settings on the fly.
+**Read/write PHP settings (php.ini) at runtime.**
 
-[![Issues](https://img.shields.io/github/issues/jawira/php-ini-settings.svg?label=HuBoard&color=694DC2)](https://huboard.com/jawira/php-ini-settings)
-
-<!--
-BADGES:
-https://github.com/php-pds/badges
-https://poser.pugx.org/
-https://php-eye.com/about#badges
-https://phppackages.org/p/jawira/case-converter
--->
+[![Latest Stable Version](https://poser.pugx.org/jawira/ini-toolbox/v/stable)](https://packagist.org/packages/jawira/ini-toolbox)
+[![Total Downloads](https://poser.pugx.org/jawira/ini-toolbox/downloads)](https://packagist.org/packages/jawira/ini-toolbox)
+[![License](https://poser.pugx.org/jawira/ini-toolbox/license)](https://packagist.org/packages/jawira/ini-toolbox)
+[![composer.lock](https://poser.pugx.org/jawira/ini-toolbox/composerlock)](https://packagist.org/packages/jawira/ini-toolbox)
+[![Issues](https://img.shields.io/github/issues/jawira/ini-toolbox.svg?label=HuBoard&color=694DC2)](https://huboard.com/jawira/ini-toolbox)
 
 ## Usage
 
-
-Usually you configure PHP through `php.ini` file, however **for some values**, it's also possible to
-change these settings at runtime.
+Usually you configure PHP through `php.ini` file, however **for some values**, it's also possible to change these
+settings at runtime.
 
 ### Get values
 
-Use `Settings::get` to get values:
+Use `IniToolbox::get` to get values:
 
 ```php
 use \Jawira\IniToolbox\{IniToolbox, Keys};
@@ -32,7 +27,7 @@ $bar = $ini->get(Keys::DEFAULT_CHARSET); // UTF-8
 
 ### Set values
 
-Use `Settings::set` to set values:
+Use `IniToolbox::set` to set values:
 
 ```php
 use \Jawira\IniToolbox\{IniToolbox, Keys};
@@ -59,12 +54,10 @@ Keys::MAX_EXECUTION_TIME;   // same as 'max_execution_time'
 composer require jawira/ini-toolbox
 ```
 
-Contributing
-------------
+## Contributing
 
-If you liked this project, ⭐ star it on GitHub.
+If you liked this project, ⭐ star it on [GitHub](https://github.com/jawira/ini-toolbox).
 
-License
--------
+## License
 
 This library is licensed under the [MIT license](LICENSE.md).
