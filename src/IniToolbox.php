@@ -18,7 +18,7 @@ use function ini_set;
  * @package Jawira\PhpIniSettings
  * @author  Jawira Portugal <dev@tugal.be>
  */
-class IniToolbox
+class IniToolbox implements IniToolboxInterface
 {
     /**
      * Ini backup
@@ -26,6 +26,7 @@ class IniToolbox
      * @var string[]
      */
     protected $backup = [];
+
 
     /**
      * Gets the value of a configuration option
